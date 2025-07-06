@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All users</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+        h2{
+            text-align: center;
+            position: relative;
+            right: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>
+        <button>
+        <a href="http://localhost:8080/user/new">Add New User</a>
+        </button>
+    </h3>
+    <h2>Here are our all users</h2>
+    <table>
+        <tr>
+            <th>Sr. no</th>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <% for(let i=0 ; i < users.length ; i++) { %>
+            <tr>
+                <td>
+                    <%= i+1 %>
+                </td>
+                <td>
+                    <%= users[i].id %>
+                </td>
+                <td>
+                    <%= users[i].username %>
+                </td>
+                <td>
+                    <%= users[i].email %>
+                </td>
+                <td>
+                    <form method="get" action="/user/<%= users[i].id %>/edit">
+                        <button>Edit username</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/user/<%= users[i].id %>/delete" method="get">
+                        <button>Delete User</button>
+                    </form>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+
+</body>
+
+</html>
